@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAW DIMSUM! - Lezatnya Bikin Meong~</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            50: '#fdf2f2',
+                            100: '#fde2e2',
+                            500: '#a31d1d', // Merah Maroon Utama
+                            600: '#851414',
+                            700: '#6b0d0d',
+                            800: '#520a0a',
+                        },
+                        yellowbright: {
+                            400: '#facc15', // Kuning Cerah Utama
+                            500: '#eab308',
+                            600: '#ca8a04',
+                        }
+                    },
+                    fontFamily: {
+                        fun: ['"Fredoka One"', 'cursive'],
+                        sans: ['Quicksand', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #fdf2f2;
+        }
+        .font-fun {
+            font-family: 'Fredoka One', cursive;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fde2e2;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #a31d1d;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="text-neutral-800 selection:bg-yellowbright-400 selection:text-maroon-700 overflow-x-hidden">
+
+    <!-- ================= CLIENT VIEW (WEBSITE UTAMA) ================= -->
+    <div id="client-view">
+        <!-- Navbar (TANPA Tombol Admin demi Keamanan) -->
+        <nav class="bg-maroon-500 text-white sticky top-0 z-40 shadow-md">
+            <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+                <a href="#" class="flex items-center space-x-2">
+                    <span class="text-2xl text-yellowbright-400"><i class="fas fa-cat"></i></span>
+                    <span class="font-fun text-xl tracking-wider text-yellowbright-400" id="nav-brand-name">MAW DIMSUM!</span>
+                </a>
+                <div class="flex space-x-6 font-bold text-sm">
+                    <a href="#tentang" class="hover:text-yellowbright-400 transition-colors">Tentang Kami</a>
+                    <a href="#menu" class="hover:text-yellowbright-400 transition-colors">Menu Lezat</a>
+                    <a href="#order" class="hover:text-yellowbright-400 transition-colors text-yellowbright-400">Pesan Sekarang</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="relative bg-gradient-to-b from-maroon-500 via-maroon-600 to-maroon-700 text-white overflow-hidden py-16 md:py-24">
+            <div class="absolute inset-0 opacity-5 pointer-events-none flex flex-wrap justify-around items-center p-10">
+                <i class="fas fa-paw text-7xl m-4"></i>
+                <i class="fas fa-paw text-8xl m-4"></i>
+                <i class="fas fa-paw text-6xl m-4"></i>
+                <i class="fas fa-paw text-9xl m-4"></i>
+            </div>
+
+            <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10">
+                <div class="text-center md:text-left space-y-6 animate__animated animate__fadeInLeft">
+                    <span class="bg-yellowbright-400 text-maroon-800 font-bold px-4 py-1.5 rounded-full text-sm inline-block shadow-sm">
+                        <i class="fas fa-utensils mr-1"></i> Dimsum Premium 100% Halal
+                    </span>
+                    <h1 class="text-4xl md:text-6xl font-fun text-yellowbright-400 leading-tight drop-shadow-md" id="hero-title">
+                        MAW DIMSUM!
+                    </h1>
+                    <p class="text-lg md:text-xl text-yellow-100" id="hero-subtitle">
+                        Sensasi kelezatan dimsum hangat yang lembut dan padat dagingnya! 🐾
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                        <a href="#menu" class="bg-yellowbright-400 hover:bg-yellowbright-500 text-maroon-800 font-bold px-8 py-3.5 rounded-full shadow-lg transition-transform hover:-translate-y-1 text-center font-fun flex items-center justify-center space-x-2">
+                            <span>LIHAT MENU</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </a>
+                        <a href="#order" class="bg-transparent border-2 border-yellowbright-400 text-yellowbright-400 hover:bg-yellowbright-400 hover:text-maroon-800 font-bold px-8 py-3.5 rounded-full shadow-lg transition-all text-center flex items-center justify-center space-x-2">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span>PESAN ONLINE</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center relative animate__animated animate__zoomIn">
+                    <div class="relative w-72 h-72 md:w-96 md:h-96 rounded-full border-8 border-yellowbright-400 overflow-hidden shadow-2xl bg-maroon-800 flex items-center justify-center">
+                        <img id="hero-image" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&q=80&w=600" alt="Maw Dimsum Premium" class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-500">
+                    </div>
+                    <div class="absolute -top-4 -left-4 bg-yellowbright-400 text-maroon-800 p-3 rounded-2xl shadow-lg font-bold text-center rotate-12 animate-bounce">
+                        <span class="block text-xs uppercase">Rasa Mantap</span>
+                        <span class="block text-lg font-fun">Rp 15K-an!</span>
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-white text-maroon-700 p-3 rounded-2xl shadow-lg font-bold text-center -rotate-12">
+                        <i class="fas fa-paw text-maroon-500 text-xl block"></i>
+                        <span class="block text-xs">Miau-proved! 🐾</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="absolute bottom-0 left-0 right-0 overflow-hidden line-height-0">
+                <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="relative block w-full h-12 text-maroon-50" style="transform: rotate(180deg);">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V120H0C55,100,111.93,81,171.13,67.62,231,54.1,288.38,62.63,321.39,56.44Z" fill="currentColor"></path>
+                </svg>
+            </div>
+        </header>
+
+        <!-- Tentang Kami -->
+        <section id="tentang" class="py-16 bg-maroon-50">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center space-y-3 mb-12">
+                    <div class="inline-flex items-center space-x-2 text-maroon-500 text-lg">
+                        <i class="fas fa-paw"></i>
+                        <span class="font-bold tracking-wider uppercase">Info Toko</span>
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-fun text-maroon-500">Miau-ncul Sejarah MAW DIMSUM!</h2>
+                    <div class="w-24 h-1 bg-yellowbright-400 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 items-center bg-white p-8 rounded-3xl shadow-xl border-t-8 border-maroon-500 relative">
+                    <div class="absolute -top-6 left-1/2 transform -translate-x-1/2 bg-yellowbright-400 text-maroon-800 px-6 py-2 rounded-full font-fun text-sm shadow-md flex items-center gap-2">
+                        <i class="fas fa-cat"></i>
+                        <span>Kedai Favorit Kucing & Manusia</span>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-maroon-500" id="about-title">Kenapa Harus MAW DIMSUM?</h3>
+                        <p class="text-neutral-600 leading-relaxed text-justify" id="about-description">
+                            Memakai daging ayam pilihan melimpah tanpa pengawet berbahaya. Setiap gigitan memberikan sensasi kenyal di luar dan kelembutan ekstra di dalam.
+                        </p>
+                        
+                        <div class="grid grid-cols-2 gap-4 pt-4">
+                            <div class="bg-maroon-50 p-4 rounded-2xl flex items-center space-x-3">
+                                <span class="bg-yellowbright-400 text-maroon-800 w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-sm"><i class="fas fa-award"></i></span>
+                                <div>
+                                    <h4 class="font-bold text-sm text-maroon-500">Premium</h4>
+                                    <p class="text-xs text-neutral-500">Ayam & Udang Segar</p>
+                                </div>
+                            </div>
+                            <div class="bg-maroon-50 p-4 rounded-2xl flex items-center space-x-3">
+                                <span class="bg-yellowbright-400 text-maroon-800 w-10 h-10 rounded-xl flex items-center justify-center text-lg shadow-sm"><i class="fas fa-heart"></i></span>
+                                <div>
+                                    <h4 class="font-bold text-sm text-maroon-500">100% Halal</h4>
+                                    <p class="text-xs text-neutral-500">Aman & Lezat</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6 border-l-0 md:border-l-2 md:border-maroon-100 md:pl-8">
+                        <h3 class="text-xl font-bold text-maroon-500"><i class="fas fa-clock mr-2 text-yellowbright-500"></i> Jam Operasional & Lokasi</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center py-2 border-b border-neutral-100">
+                                <span class="font-medium text-neutral-600">Senin - Jumat</span>
+                                <span class="bg-maroon-500 text-white font-bold px-3 py-1 rounded-lg text-xs" id="schedule-weekday">10.00 - 21.00 WIB</span>
+                            </div>
+                            <div class="flex justify-between items-center py-2 border-b border-neutral-100">
+                                <span class="font-medium text-neutral-600">Sabtu - Minggu</span>
+                                <span class="bg-yellowbright-400 text-maroon-800 font-bold px-3 py-1 rounded-lg text-xs" id="schedule-weekend">09.00 - 22.00 WIB</span>
+                            </div>
+                            <div class="py-2">
+                                <span class="font-medium text-neutral-600 block mb-1">Alamat Outlet:</span>
+                                <p class="text-sm text-neutral-500" id="shop-address">Jl. Kelezatan Dimsum No. 99, Kecamatan Meong, Bandung</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Menu Section -->
+        <section id="menu" class="py-16 bg-white">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center space-y-3 mb-12">
+                    <div class="inline-flex items-center space-x-2 text-maroon-500 text-lg">
+                        <i class="fas fa-paw"></i>
+                        <span class="font-bold tracking-wider uppercase">Menu Andalan</span>
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-fun text-maroon-500">Menu Paling Dicari Miau!</h2>
+                    <p class="text-neutral-500 max-w-lg mx-auto">Kami menyajikan variasi olahan dimsum kukus maupun goreng dengan siraman saus chili oil khas.</p>
+                    <div class="w-24 h-1 bg-yellowbright-400 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8" id="menu-container">
+                    <!-- Dinamis -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Order & Social Media -->
+        <section id="order" class="py-16 bg-gradient-to-br from-maroon-600 to-maroon-800 text-white relative">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="text-center space-y-3 mb-12">
+                    <div class="inline-flex items-center space-x-2 text-yellowbright-400 text-lg">
+                        <i class="fas fa-paw"></i>
+                        <span class="font-bold tracking-wider uppercase">Pesan Instan</span>
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-fun text-yellowbright-400">Order Online & Sosmed Kami 🐾</h2>
+                    <div class="w-24 h-1 bg-yellowbright-400 mx-auto rounded-full"></div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Delivery List -->
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10 flex flex-col justify-between space-y-6">
+                        <h3 class="text-xl font-bold text-yellowbright-400 flex items-center gap-2">
+                            <i class="fas fa-motorcycle"></i>
+                            <span>Ojek Online & Delivery</span>
+                        </h3>
+                        <div class="space-y-4">
+                            <a id="link-shopeefood" href="https://shopee.co.id" target="_blank" class="flex items-center justify-between bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-4 rounded-2xl transition-all hover:-translate-y-1 shadow-md">
+                                <span class="flex items-center gap-3"><i class="fas fa-store"></i> <span>ShopeeFood</span></span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a id="link-gofood" href="https://gojek.com" target="_blank" class="flex items-center justify-between bg-green-600 hover:bg-green-700 text-white font-bold px-6 py-4 rounded-2xl transition-all hover:-translate-y-1 shadow-md">
+                                <span class="flex items-center gap-3"><i class="fas fa-motorcycle"></i> <span>GoFood</span></span>
+                                <i class="fas fa-external-link-alt"></i>
+                            </a>
+                            <a id="link-whatsapp" href="https://wa.me/628123456789" target="_blank" class="flex items-center justify-between bg-emerald-500 hover:bg-emerald-600 text-white font-bold px-6 py-4 rounded-2xl transition-all hover:-translate-y-1 shadow-md">
+                                <span class="flex items-center gap-3"><i class="fab fa-whatsapp text-2xl"></i> <span>Pesan via WhatsApp</span></span>
+                                <i class="fas fa-paper-plane"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Maps & Sosmed -->
+                    <div class="bg-white/10 backdrop-blur-md p-8 rounded-3xl border border-white/10 flex flex-col justify-between space-y-6">
+                        <h3 class="text-xl font-bold text-yellowbright-400 flex items-center gap-2">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Kunjungi & Kepoin Kami</span>
+                        </h3>
+                        <div class="space-y-4">
+                            <a id="link-googlemaps" href="https://maps.google.com" target="_blank" class="flex items-center justify-between bg-blue-600 hover:bg-blue-700 text-white font-bold px-6 py-4 rounded-2xl transition-all hover:-translate-y-1 shadow-md">
+                                <span class="flex items-center gap-3"><i class="fas fa-map-marker-alt"></i> <span>Petunjuk Google Maps</span></span>
+                                <i class="fas fa-directions"></i>
+                            </a>
+                            <div class="grid grid-cols-2 gap-4">
+                                <a id="link-tiktok" href="https://tiktok.com" target="_blank" class="flex items-center justify-center gap-2 bg-neutral-900 hover:bg-neutral-800 text-white font-bold py-4 rounded-2xl transition-all hover:-translate-y-1 shadow-md">
+                                    <i class="fab fa-tiktok"></i> <span>TikTok</span>
+                                </a>
+                                <a id="link-instagram" href="https://instagram.com" target="_blank" class="flex items-center justify-center gap-2 bg-pink-600 hover:bg-pink-700 text-white font-bold py-4 rounded-2xl transition-all hover:-translate-y-1 shadow-md">
+                                    <i class="fab fa-instagram"></i> <span>Instagram</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Review Section -->
+        <section id="ulasan" class="py-16 bg-maroon-50 overflow-hidden relative">
+            <div class="max-w-6xl mx-auto px-4 relative z-10">
+                <div class="text-center space-y-3 mb-12">
+                    <div class="inline-flex items-center space-x-2 text-maroon-500 text-lg">
+                        <i class="fas fa-paw"></i>
+                        <span class="font-bold tracking-wider uppercase">Ulasan</span>
+                        <i class="fas fa-paw"></i>
+                    </div>
+                    <h2 class="text-3xl md:text-4xl font-fun text-maroon-500">Kata Para Pecinta Dimsum 🐾</h2>
+                    <div class="w-24 h-1 bg-yellowbright-400 mx-auto rounded-full"></div>
+                </div>
+                <div class="grid md:grid-cols-3 gap-6" id="reviews-container">
+                    <!-- Dinamis -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="bg-maroon-800 text-neutral-300 py-12 border-t-4 border-yellowbright-400">
+            <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-3 gap-8">
+                <div class="space-y-4">
+                    <div class="flex items-center space-x-2">
+                        <span class="text-2xl text-yellowbright-400"><i class="fas fa-cat"></i></span>
+                        <span class="font-fun text-xl tracking-wider text-yellowbright-400 footer-brand-name">MAW DIMSUM!</span>
+                    </div>
+                    <p class="text-sm text-neutral-400">
+                        Menyajikan dimsum hangat kualitas premium dengan resep khas yang dijamin meong banget! 🐾
+                    </p>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-fun text-white text-lg tracking-wide border-b border-maroon-700 pb-2">Menu Favorit</h4>
+                    <ul class="space-y-2 text-sm text-neutral-400" id="footer-fav-menu">
+                        <!-- Dinamis -->
+                    </ul>
+                </div>
+                <div class="space-y-4">
+                    <h4 class="font-fun text-white text-lg tracking-wide border-b border-maroon-700 pb-2">Kontak Kami</h4>
+                    <p class="text-sm text-neutral-400" id="footer-address">Jl. Kelezatan Dimsum No. 99, Bandung</p>
+                    <p class="text-sm font-bold text-yellowbright-400" id="footer-phone">+62 812-3456-789</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <!-- ================= ADMIN VIEW (PORTAL KELOLA WEB RAHASIA) ================= -->
+    <div id="admin-view" class="hidden min-h-screen bg-slate-900 text-slate-100 flex flex-col font-sans">
+        
+        <!-- LOGIN SCREEN (Ditampilkan jika belum masuk sebagai Admin) -->
+        <div id="admin-login-screen" class="flex-1 flex items-center justify-center p-4">
+            <div class="bg-slate-800 rounded-3xl w-full max-w-md p-8 shadow-2xl border-t-8 border-yellowbright-400 animate__animated animate__zoomIn">
+                <div class="text-center space-y-3 mb-6">
+                    <div class="text-5xl text-yellowbright-400"><i class="fas fa-cat"></i></div>
+                    <h3 class="text-2xl font-fun text-yellowbright-400">Portal Kelola Rahasia</h3>
+                    <p class="text-sm text-slate-400">Masukkan kata sandi khusus pemilik toko untuk mengelola konten website.</p>
+                </div>
+                
+                <form onsubmit="verifikasiAdmin(event)" class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Password Admin</label>
+                        <input type="password" id="admin-password-input" class="w-full bg-slate-750 border border-slate-700 rounded-xl px-4 py-3 text-center tracking-widest text-white text-lg focus:outline-none focus:ring-2 focus:ring-yellowbright-400" placeholder="••••••••" required>
+                    </div>
+                    <div id="login-error-msg" class="text-red-400 text-xs font-bold text-center hidden">
+                        <i class="fas fa-exclamation-triangle mr-1"></i> Kata sandi salah! Coba lagi.
+                    </div>
+                    <button type="submit" class="w-full bg-yellowbright-400 hover:bg-yellowbright-500 text-maroon-800 font-bold py-3.5 rounded-xl shadow-lg transition-transform hover:-translate-y-0.5 font-fun">
+                        <i class="fas fa-unlock mr-2"></i> BUKALOCK PENGATURAN
+                    </button>
+                    <button type="button" onclick="kembaliKeWebUtama()" class="w-full bg-slate-700 hover:bg-slate-600 text-slate-300 font-bold py-2 rounded-xl text-xs">
+                        Kembali ke Web Utama
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- DASHBOARD UTAMA ADMIN (Hanya terlihat setelah login sukses) -->
+        <div id="admin-dashboard-container" class="hidden flex-1 flex flex-col">
+            <!-- Header Admin -->
+            <header class="bg-slate-800 border-b border-slate-700 px-6 py-4 flex justify-between items-center shadow-lg">
+                <div class="flex items-center space-x-3">
+                    <span class="text-3xl text-yellowbright-400"><i class="fas fa-paw"></i></span>
+                    <div>
+                        <h1 class="text-lg font-fun text-yellowbright-400 tracking-wider">MAW-BOARD ADMIN PANEL</h1>
+                        <p class="text-xs text-slate-400">Kelola dan update tampilan web Anda secara langsung</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <button onclick="kembaliKeWebUtama()" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2 rounded-xl shadow transition-all">
+                        <i class="fas fa-eye mr-1"></i> Lihat Web Utama
+                    </button>
+                    <button onclick="keluarAdmin()" class="bg-red-600 hover:bg-red-700 text-white text-xs font-bold px-4 py-2 rounded-xl shadow transition-all">
+                        <i class="fas fa-sign-out-alt mr-1"></i> Keluar
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <main class="flex-1 max-w-6xl w-full mx-auto p-6 space-y-8 overflow-y-auto">
+                
+                <!-- 1. IDENTITAS UTAMA TOKO -->
+                <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-4">
+                    <h2 class="text-lg font-fun text-yellowbright-400 border-b border-slate-700 pb-2 flex items-center gap-2">
+                        <i class="fas fa-store"></i> <span>1. Identitas & Teks Utama Toko</span>
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 mb-1">Nama Brand Toko</label>
+                            <input type="text" id="admin-shop-name" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 mb-1">Slogan Utama (Sub-Title Hero)</label>
+                            <input type="text" id="admin-shop-tagline" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-slate-400 mb-1">Deskripsi Tentang Kami (Tentang Sejarah)</label>
+                            <textarea id="admin-shop-desc" rows="3" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400"></textarea>
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-slate-400 mb-1">Gambar Banner Hero (Masukkan URL Foto)</label>
+                            <input type="text" id="admin-hero-image-url" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400" placeholder="https://unsplash.com/...">
+                        </div>
+                        <div class="md:col-span-2">
+                            <label class="block text-xs font-bold text-slate-400 mb-1">Alamat Fisik Outlet</label>
+                            <input type="text" id="admin-shop-address" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 mb-1">Jam Operasional (Weekday)</label>
+                            <input type="text" id="admin-schedule-weekday" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 mb-1">Jam Operasional (Weekend)</label>
+                            <input type="text" id="admin-schedule-weekend" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 2. SOCIAL MEDIA & DELIVERIES -->
+                <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-4">
+                    <h2 class="text-lg font-fun text-yellowbright-400 border-b border-slate-700 pb-2 flex items-center gap-2">
+                        <i class="fas fa-link"></i> <span>2. Link Layanan & Sosial Media</span>
+                    </h2>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 mb-1"><i class="fab fa-whatsapp text-green-400 mr-1"></i> WhatsApp (+62...)</label>
+                            <input type="text" id="admin-link-whatsapp" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 mb-1"><i class="fas fa-store text-orange-400 mr-1"></i> ShopeeFood Link</label>
+                            <input type="text" id="admin-link-shopeefood" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 mb-1"><i class="fas fa-motorcycle text-green-500 mr-1"></i> GoFood Link</label>
+                            <input type="text" id="admin-link-gofood" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 mb-1"><i class="fas fa-map-marker-alt text-blue-400 mr-1"></i> Google Maps Link</label>
+                            <input type="text" id="admin-link-googlemaps" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 mb-1"><i class="fab fa-instagram text-pink-400 mr-1"></i> Instagram Link</label>
+                            <input type="text" id="admin-link-instagram" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-400 mb-1"><i class="fab fa-tiktok text-slate-300 mr-1"></i> TikTok Link</label>
+                            <input type="text" id="admin-link-tiktok" class="w-full bg-slate-900 border border-slate-700 text-slate-100 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 3. KELOLA MENU (CRUD) -->
+                <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-4">
+                    <h2 class="text-lg font-fun text-yellowbright-400 border-b border-slate-700 pb-2 flex items-center gap-2">
+                        <i class="fas fa-hamburger"></i> <span>3. Kelola Daftar Menu Makanan</span>
+                    </h2>
+                    
+                    <!-- Tambah Menu -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-750 space-y-3">
+                        <span class="text-xs font-bold text-yellowbright-400 uppercase tracking-widest block"><i class="fas fa-plus"></i> Tambah Menu Baru</span>
+                        <div class="grid sm:grid-cols-3 gap-3">
+                            <input type="text" id="new-menu-name" placeholder="Nama Menu (Contoh: Dimsum Mentai)" class="bg-slate-800 border border-slate-700 text-slate-100 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                            <input type="text" id="new-menu-price" placeholder="Harga (Contoh: Rp 16.000)" class="bg-slate-800 border border-slate-700 text-slate-100 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                            <input type="text" id="new-menu-desc" placeholder="Keterangan singkat" class="bg-slate-800 border border-slate-700 text-slate-100 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                            <div class="sm:col-span-2">
+                                <input type="text" id="new-menu-image" placeholder="URL Foto Menu" class="w-full bg-slate-800 border border-slate-700 text-slate-100 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                            </div>
+                            <button onclick="tambahMenu()" class="bg-yellowbright-400 hover:bg-yellowbright-500 text-maroon-800 font-bold text-xs px-4 py-2 rounded-lg flex items-center justify-center gap-1 font-fun">
+                                <i class="fas fa-plus"></i> Tambah Menu
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- List Menu Aktif -->
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold text-slate-400 uppercase block">Daftar Menu Saat Ini:</span>
+                        <div class="divide-y divide-slate-750 max-h-60 overflow-y-auto border border-slate-700 rounded-xl bg-slate-900 p-2" id="admin-menu-list">
+                            <!-- JS Dinamis -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 4. KELOLA REVIEW CUSTOMER -->
+                <section class="bg-slate-800 p-6 rounded-2xl border border-slate-700 space-y-4">
+                    <h2 class="text-lg font-fun text-yellowbright-400 border-b border-slate-700 pb-2 flex items-center gap-2">
+                        <i class="fas fa-star"></i> <span>4. Kelola Ulasan Pelanggan</span>
+                    </h2>
+
+                    <!-- Tambah Review -->
+                    <div class="bg-slate-900 p-4 rounded-xl border border-slate-750 space-y-3">
+                        <span class="text-xs font-bold text-yellowbright-400 uppercase tracking-widest block"><i class="fas fa-plus"></i> Tambah Ulasan Baru</span>
+                        <div class="grid sm:grid-cols-3 gap-3">
+                            <input type="text" id="new-review-name" placeholder="Nama Pengulas" class="bg-slate-800 border border-slate-700 text-slate-100 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                            <select id="new-review-rating" class="bg-slate-800 border border-slate-700 text-slate-100 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                                <option value="5">⭐⭐⭐⭐⭐ (5 Bintang)</option>
+                                <option value="4">⭐⭐⭐⭐ (4 Bintang)</option>
+                                <option value="3">⭐⭐⭐ (3 Bintang)</option>
+                            </select>
+                            <input type="text" id="new-review-text" placeholder="Isi Ulasan Singkat" class="sm:col-span-3 bg-slate-800 border border-slate-700 text-slate-100 rounded-lg px-3 py-2 text-xs focus:outline-none focus:ring-1 focus:ring-yellowbright-400">
+                            
+                            <button onclick="tambahReview()" class="sm:col-span-3 bg-yellowbright-400 hover:bg-yellowbright-500 text-maroon-800 font-bold text-xs px-4 py-2 rounded-lg flex items-center justify-center gap-1 font-fun">
+                                <i class="fas fa-plus"></i> Tambah Ulasan
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- List Review Aktif -->
+                    <div class="space-y-2">
+                        <span class="text-xs font-bold text-slate-400 uppercase block">Ulasan Saat Ini:</span>
+                        <div class="divide-y divide-slate-750 max-h-60 overflow-y-auto border border-slate-700 rounded-xl bg-slate-900 p-2" id="admin-reviews-list">
+                            <!-- JS Dinamis -->
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Admin Fixed Footer/Actions -->
+            <footer class="bg-slate-800 border-t border-slate-700 p-4 flex justify-end gap-3 shadow-inner">
+                <button onclick="kembaliKeWebUtama()" class="bg-slate-700 hover:bg-slate-600 text-slate-200 font-bold px-6 py-2.5 rounded-xl text-sm transition-all">
+                    Batal
+                </button>
+                <button onclick="simpanPerubahanAdmin()" class="bg-yellowbright-400 hover:bg-yellowbright-500 text-maroon-800 font-bold px-8 py-2.5 rounded-xl text-sm flex items-center gap-1 shadow-lg transition-all font-fun">
+                    <i class="fas fa-save"></i> SIMPAN PERUBAHAN WEB
+                </button>
+            </footer>
+        </div>
+
+    </div>
+
+    <!-- Toast Notifikasi Mini -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-maroon-800 text-white px-6 py-3.5 rounded-2xl shadow-2xl border-2 border-yellowbright-400 z-50 flex items-center space-x-2 transition-opacity duration-300 opacity-0 pointer-events-none">
+        <span class="text-yellowbright-400"><i class="fas fa-bell"></i></span>
+        <span id="toast-message" class="text-sm font-bold"></span>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT STATE & ROUTING LOGIC ================= -->
+    <script>
+        const defaultData = {
+            shopName: "MAW DIMSUM!",
+            tagline: "Sensasi kelezatan dimsum hangat yang lembut dan padat dagingnya, dijamin bikin kamu ketagihan dan bilang 'MAAAWW LAGIIII!' 🐾",
+            aboutTitle: "Kenapa Harus MAW DIMSUM?",
+            aboutDescription: "Lahir dari kecintaan kami terhadap cita rasa kuliner Tiongkok yang disesuaikan dengan lidah Nusantara. Kami mengolah dimsum secara bersih dan higienis, menggunakan daging ayam pilihan melimpah tanpa pengawet berbahaya. Setiap gigitan memberikan sensasi kenyal di luar dan kelembutan ekstra di dalam.",
+            heroImageUrl: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&q=80&w=600",
+            address: "Jl. Kelezatan Dimsum No. 99, Kecamatan Meong, Kota Bandung, Jawa Barat",
+            scheduleWeekday: "10.00 - 21.00 WIB",
+            scheduleWeekend: "09.00 - 22.00 WIB",
+            linkWhatsapp: "https://wa.me/628123456789",
+            linkShopeefood: "https://shopee.co.id",
+            linkGofood: "https://gojek.com",
+            linkGooglemaps: "https://maps.google.com",
+            linkInstagram: "https://instagram.com",
+            linkTiktok: "https://tiktok.com",
+            menuList: [
+                {
+                    id: 1,
+                    name: "Dimsum Ayam Original",
+                    price: "Rp 15.000",
+                    desc: "Isi 4 pcs, dibuat dari 100% daging dada ayam cincang padat juicy.",
+                    image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&q=80&w=300"
+                },
+                {
+                    id: 2,
+                    name: "Dimsum Udang Premium",
+                    price: "Rp 18.000",
+                    desc: "Isi 4 pcs, dimsum ayam gurih bertabur udang kupas utuh yang kenyal.",
+                    image: "https://images.unsplash.com/photo-1541696432-82c6da8ce7bf?auto=format&fit=crop&q=80&w=300"
+                },
+                {
+                    id: 3,
+                    name: "Dimsum Chili Oil (Hot!)",
+                    price: "Rp 16.500",
+                    desc: "Isi 4 pcs, dimsum original diguyur minyak cabai pedas buatan rumah.",
+                    image: "https://images.unsplash.com/photo-1626200419199-391ae4be7a41?auto=format&fit=crop&q=80&w=300"
+                }
+            ],
+            reviews: [
+                {
+                    id: 1,
+                    name: "Rian Aditya",
+                    rating: 5,
+                    text: "Sumpah dimsumnya padat banget! Daging ayamnya kerasa asli, nggak dominan tepung kayak tempat lain. Chili oilnya nagih meong! 🐾"
+                },
+                {
+                    id: 2,
+                    name: "Siti Rahma",
+                    rating: 5,
+                    text: "Sangat direkomendasikan untuk kumpul keluarga. Udangnya manis segar dan keju mozzarellanya melimpah. Anak-anak suka sekali!"
+                }
+            ]
+        };
+
+        let appData = {};
+
+        // Inisialisasi Data dari LocalStorage atau default
+        function initApp() {
+            const storedData = localStorage.getItem('maw_dimsum_data');
+            if (storedData) {
+                try {
+                    appData = JSON.parse(storedData);
+                    if(!appData.menuList) appData.menuList = defaultData.menuList;
+                    if(!appData.reviews) appData.reviews = defaultData.reviews;
+                } catch(e) {
+                    appData = JSON.parse(JSON.stringify(defaultData));
+                }
+            } else {
+                appData = JSON.parse(JSON.stringify(defaultData));
+            }
+            renderWebsite();
+        }
+
+        // Simpan Data Terkini ke LocalStorage
+        function saveData() {
+            localStorage.setItem('maw_dimsum_data', JSON.stringify(appData));
+        }
+
+        // ================= ROUTING LOGIC (SECRET GATE) =================
+        function handleSecretRouting() {
+            const hash = window.location.hash;
+            const clientView = document.getElementById('client-view');
+            const adminView = document.getElementById('admin-view');
+
+            if (hash === '#admin') {
+                // Sembunyikan web utama secara total
+                clientView.classList.add('hidden');
+                adminView.classList.remove('hidden');
+                
+                // Periksa status login admin
+                const isLogged = sessionStorage.getItem('is_admin_logged_in');
+                if (isLogged === 'true') {
+                    showAdminDashboard();
+                } else {
+                    showAdminLogin();
+                }
+            } else {
+                // Tampilkan web utama
+                clientView.classList.remove('hidden');
+                adminView.classList.add('hidden');
+                initApp();
+            }
+        }
+
+        window.addEventListener('hashchange', handleSecretRouting);
+        window.addEventListener('load', handleSecretRouting);
+
+        // ================= ADMIN VIEW TOGGLES =================
+        function showAdminLogin() {
+            document.getElementById('admin-login-screen').classList.remove('hidden');
+            document.getElementById('admin-dashboard-container').classList.add('hidden');
+        }
+
+        function showAdminDashboard() {
+            document.getElementById('admin-login-screen').classList.add('hidden');
+            document.getElementById('admin-dashboard-container').classList.remove('hidden');
+            isiFormulirAdmin();
+        }
+
+        function verifikasiAdmin(e) {
+            e.preventDefault();
+            const passwordInput = document.getElementById('admin-password-input').value;
+            // Password default: admin123
+            if (passwordInput === 'admin123') {
+                sessionStorage.setItem('is_admin_logged_in', 'true');
+                showAdminDashboard();
+                tunjukkanToast("Selamat datang kembali, Owner! 🐾");
+                document.getElementById('login-error-msg').classList.add('hidden');
+                document.getElementById('admin-password-input').value = '';
+            } else {
+                document.getElementById('login-error-msg').classList.remove('hidden');
+            }
+        }
+
+        function keluarAdmin() {
+            sessionStorage.removeItem('is_admin_logged_in');
+            window.location.hash = ''; // Kembali ke Web Utama
+            tunjukkanToast("Keluar dari panel admin.");
+        }
+
+        function kembaliKeWebUtama() {
+            window.location.hash = '';
+        }
+
+        // ================= RENDER CLIENT WEBSITE =================
+        function renderWebsite() {
+            // Update teks statis
+            document.getElementById('nav-brand-name').innerText = appData.shopName;
+            document.querySelectorAll('.footer-brand-name').forEach(el => el.innerText = appData.shopName);
+            document.getElementById('hero-title').innerText = appData.shopName;
+            document.getElementById('hero-subtitle').innerText = appData.tagline;
+            document.getElementById('hero-image').src = appData.heroImageUrl;
+            document.getElementById('about-title').innerText = appData.aboutTitle;
+            document.getElementById('about-description').innerText = appData.aboutDescription;
+            document.getElementById('shop-address').innerText = appData.address;
+            document.getElementById('footer-address').innerText = appData.address;
+            document.getElementById('schedule-weekday').innerText = appData.scheduleWeekday;
+            document.getElementById('schedule-weekend').innerText = appData.scheduleWeekend;
+
+            // Link WhatsApp & Sosmed
+            const waNumber = appData.linkWhatsapp.replace(/\D/g, "");
+            document.getElementById('link-whatsapp').href = `https://wa.me/${waNumber || '628123456789'}`;
+            document.getElementById('footer-phone').innerText = `+${waNumber || '62 812-3456-789'}`;
+            
+            document.getElementById('link-shopeefood').href = appData.linkShopeefood;
+            document.getElementById('link-gofood').href = appData.linkGofood;
+            document.getElementById('link-googlemaps').href = appData.linkGooglemaps;
+            document.getElementById('link-instagram').href = appData.linkInstagram;
+            document.getElementById('link-tiktok').href = appData.linkTiktok;
+
+            // Render List Menu Utama
+            const menuContainer = document.getElementById('menu-container');
+            menuContainer.innerHTML = '';
+            appData.menuList.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-3xl overflow-hidden shadow-xl border-2 border-maroon-50 hover:border-yellowbright-400 transition-all hover:-translate-y-2 group relative";
+                const imgUrl = item.image && item.image.trim() !== "" ? item.image : "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&q=80&w=300";
+                
+                card.innerHTML = `
+                    <div class="h-56 overflow-hidden relative bg-maroon-100">
+                        <img src="${imgUrl}" alt="${item.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute top-3 left-3 bg-yellowbright-400 text-maroon-800 font-fun text-sm px-3 py-1 rounded-full shadow-md">
+                            ${item.price}
+                        </div>
+                    </div>
+                    <div class="p-6 space-y-3">
+                        <h3 class="text-xl font-bold text-maroon-500 font-fun">${item.name}</h3>
+                        <p class="text-sm text-neutral-500 line-clamp-2">${item.desc}</p>
+                        <div class="pt-2 border-t border-neutral-100 flex items-center justify-between">
+                            <span class="text-xs font-bold text-green-600 bg-green-50 px-2 py-1 rounded-md">Freshly Steamed</span>
+                            <a href="https://wa.me/${waNumber}?text=Halo%20Maw%20Dimsum,%20saya%20ingin%20memesan%20${encodeURIComponent(item.name)}" target="_blank" class="bg-maroon-500 hover:bg-maroon-600 text-white text-xs font-bold px-4 py-2 rounded-full transition-all flex items-center gap-1">
+                                <i class="fab fa-whatsapp"></i> Pesan
+                            </a>
+                        </div>
+                    </div>
+                `;
+                menuContainer.appendChild(card);
+            });
+
+            // Render Favorite Menu (Footer)
+            const footerMenu = document.getElementById('footer-fav-menu');
+            footerMenu.innerHTML = '';
+            appData.menuList.slice(0, 3).forEach(item => {
+                const li = document.createElement('li');
+                li.innerHTML = `<i class="fas fa-check text-yellowbright-400 mr-2"></i> ${item.name}`;
+                footerMenu.appendChild(li);
+            });
+
+            // Render Reviews
+            const reviewsContainer = document.getElementById('reviews-container');
+            reviewsContainer.innerHTML = '';
+            appData.reviews.forEach(rev => {
+                const stars = "⭐".repeat(rev.rating);
+                const itemDiv = document.createElement('div');
+                itemDiv.className = "bg-white p-6 rounded-3xl shadow-lg border border-neutral-100 pt-8 flex flex-col justify-between";
+                itemDiv.innerHTML = `
+                    <p class="text-sm italic text-neutral-600 mb-4">"${rev.text}"</p>
+                    <div class="flex items-center justify-between pt-4 border-t border-neutral-100">
+                        <h4 class="font-bold text-neutral-800 text-sm">${rev.name}</h4>
+                        <div class="text-xs">${stars}</div>
+                    </div>
+                `;
+                reviewsContainer.appendChild(itemDiv);
+            });
+        }
+
+        // ================= FORMULIR POPULATE ADMIN =================
+        function isiFormulirAdmin() {
+            document.getElementById('admin-shop-name').value = appData.shopName;
+            document.getElementById('admin-shop-tagline').value = appData.tagline;
+            document.getElementById('admin-shop-desc').value = appData.aboutDescription;
+            document.getElementById('admin-hero-image-url').value = appData.heroImageUrl;
+            document.getElementById('admin-shop-address').value = appData.address;
+            document.getElementById('admin-schedule-weekday').value = appData.scheduleWeekday;
+            document.getElementById('admin-schedule-weekend').value = appData.scheduleWeekend;
+
+            document.getElementById('admin-link-whatsapp').value = appData.linkWhatsapp;
+            document.getElementById('admin-link-shopeefood').value = appData.linkShopeefood;
+            document.getElementById('admin-link-gofood').value = appData.linkGofood;
+            document.getElementById('admin-link-googlemaps').value = appData.linkGooglemaps;
+            document.getElementById('admin-link-instagram').value = appData.linkInstagram;
+            document.getElementById('admin-link-tiktok').value = appData.linkTiktok;
+
+            renderAdminMenuList();
+            renderAdminReviewsList();
+        }
+
+        // ================= KELOLA MENU (ADMIN SIDE) =================
+        function renderAdminMenuList() {
+            const container = document.getElementById('admin-menu-list');
+            container.innerHTML = '';
+            appData.menuList.forEach(item => {
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between py-3 px-2 hover:bg-slate-800/50 transition-colors";
+                div.innerHTML = `
+                    <div class="flex items-center space-x-3">
+                        <img src="${item.image}" alt="" class="w-10 h-10 object-cover rounded-lg bg-slate-800">
+                        <div>
+                            <p class="text-sm font-bold text-slate-200">${item.name} <span class="text-yellowbright-400 font-normal">(${item.price})</span></p>
+                        </div>
+                    </div>
+                    <button onclick="hapusMenu(${item.id})" class="text-red-400 hover:text-red-600 p-2 text-sm transition-colors">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function tambahMenu() {
+            const name = document.getElementById('new-menu-name').value.trim();
+            const price = document.getElementById('new-menu-price').value.trim();
+            const desc = document.getElementById('new-menu-desc').value.trim();
+            let image = document.getElementById('new-menu-image').value.trim();
+
+            if (!name || !price) {
+                tunjukkanToast("Nama menu dan harga tidak boleh kosong!");
+                return;
+            }
+            if(!image) {
+                image = "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&q=80&w=300";
+            }
+
+            appData.menuList.push({
+                id: Date.now(),
+                name,
+                price,
+                desc: desc || "Dimsum premium lezat.",
+                image
+            });
+
+            renderAdminMenuList();
+            tunjukkanToast(`Berhasil menambahkan menu ${name}!`);
+            document.getElementById('new-menu-name').value = '';
+            document.getElementById('new-menu-price').value = '';
+            document.getElementById('new-menu-desc').value = '';
+            document.getElementById('new-menu-image').value = '';
+        }
+
+        function hapusMenu(id) {
+            appData.menuList = appData.menuList.filter(item => item.id !== id);
+            renderAdminMenuList();
+            tunjukkanToast("Menu berhasil dihapus!");
+        }
+
+        // ================= KELOLA REVIEW (ADMIN SIDE) =================
+        function renderAdminReviewsList() {
+            const container = document.getElementById('admin-reviews-list');
+            container.innerHTML = '';
+            appData.reviews.forEach(rev => {
+                const div = document.createElement('div');
+                div.className = "flex items-center justify-between py-3 px-2 hover:bg-slate-800/50 transition-colors";
+                div.innerHTML = `
+                    <div>
+                        <p class="text-sm font-bold text-slate-200">${rev.name} <span class="text-yellow-400">${'⭐'.repeat(rev.rating)}</span></p>
+                        <p class="text-xs text-slate-400 truncate w-60">"${rev.text}"</p>
+                    </div>
+                    <button onclick="hapusReview(${rev.id})" class="text-red-400 hover:text-red-600 p-2 text-sm transition-colors">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function tambahReview() {
+            const name = document.getElementById('new-review-name').value.trim();
+            const rating = parseInt(document.getElementById('new-review-rating').value);
+            const text = document.getElementById('new-review-text').value.trim();
+
+            if(!name || !text) {
+                tunjukkanToast("Nama pengulas dan ulasan tidak boleh kosong!");
+                return;
+            }
+
+            appData.reviews.push({ id: Date.now(), name, rating, text });
+            renderAdminReviewsList();
+            tunjukkanToast(`Ulasan dari ${name} ditambahkan!`);
+            document.getElementById('new-review-name').value = '';
+            document.getElementById('new-review-text').value = '';
+        }
+
+        function hapusReview(id) {
+            appData.reviews = appData.reviews.filter(item => item.id !== id);
+            renderAdminReviewsList();
+            tunjukkanToast("Ulasan berhasil dihapus!");
+        }
+
+        // ================= SIMPAN SEMUA PERUBAHAN ADMIN =================
+        function simpanPerubahanAdmin() {
+            appData.shopName = document.getElementById('admin-shop-name').value.trim() || defaultData.shopName;
+            appData.tagline = document.getElementById('admin-shop-tagline').value.trim() || defaultData.tagline;
+            appData.aboutDescription = document.getElementById('admin-shop-desc').value.trim() || defaultData.aboutDescription;
+            appData.heroImageUrl = document.getElementById('admin-hero-image-url').value.trim() || defaultData.heroImageUrl;
+            appData.address = document.getElementById('admin-shop-address').value.trim() || defaultData.address;
+            appData.scheduleWeekday = document.getElementById('admin-schedule-weekday').value.trim() || defaultData.scheduleWeekday;
+            appData.scheduleWeekend = document.getElementById('admin-schedule-weekend').value.trim() || defaultData.scheduleWeekend;
+
+            appData.linkWhatsapp = document.getElementById('admin-link-whatsapp').value.trim() || defaultData.linkWhatsapp;
+            appData.linkShopeefood = document.getElementById('admin-link-shopeefood').value.trim() || defaultData.linkShopeefood;
+            appData.linkGofood = document.getElementById('admin-link-gofood').value.trim() || defaultData.linkGofood;
+            appData.linkGooglemaps = document.getElementById('admin-link-googlemaps').value.trim() || defaultData.linkGooglemaps;
+            appData.linkInstagram = document.getElementById('admin-link-instagram').value.trim() || defaultData.linkInstagram;
+            appData.linkTiktok = document.getElementById('admin-link-tiktok').value.trim() || defaultData.linkTiktok;
+
+            saveData();
+            renderWebsite();
+            tunjukkanToast("Semua data web berhasil diupdate! 🎉");
+            window.location.hash = ''; // Beralih otomatis ke Web Utama
+        }
+
+        // Helper Notification Toast
+        function tunjukkanToast(pesan) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            toastMsg.innerText = pesan;
+            toast.classList.remove('opacity-0', 'pointer-events-none');
+            toast.classList.add('opacity-100', 'animate__animated', 'animate__fadeInUp');
+            
+            setTimeout(() => {
+                toast.classList.remove('opacity-100', 'animate__fadeInUp');
+                toast.classList.add('opacity-0', 'pointer-events-none');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
